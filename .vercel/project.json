@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_MzlyxXWuGFLeLbuCVU1vBWClFRNk",
+  "orgId": "team_0DQgBvGZACOCcDocAexXCnKg",
+  "projectName": "v0-premium-homepage-design",
+  "settings": {
+    "createdAt": 1778344186535,
+    "framework": "nextjs",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
