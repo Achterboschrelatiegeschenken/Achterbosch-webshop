@@ -29,8 +29,7 @@ export function CTASection() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button 
-                size="lg" 
-                variant="outline" 
+                
                 className="border-border text-foreground hover:bg-secondary px-8"
               >
                 <Phone className="mr-2 w-5 h-5" />
