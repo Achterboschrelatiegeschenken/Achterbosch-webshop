@@ -38,7 +38,7 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" className="border-border text-foreground hover:bg-secondary">
+            <Button className="border-border text-foreground hover:bg-secondary">
               Bekijk assortiment
             </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
