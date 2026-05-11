@@ -34,7 +34,7 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
-              size="lg" 
+              
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg w-full sm:w-auto"
             >
               Bekijk assortiment
@@ -43,7 +43,7 @@ export function HeroSection() {
             <Button 
           
               
-              className="border-border text-foreground hover:bg-secondary px-8 py-6 text-lg w-full sm:w-auto"
+            className="border-border text-foreground hover:bg-secondary px-8 py-6 text-lg w-full sm:w-auto"
             >
               Offerte aanvragen
             </Button>
