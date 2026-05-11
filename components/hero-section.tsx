@@ -41,7 +41,7 @@ export function HeroSection() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
-              size="lg" 
+          
               
               className="border-border text-foreground hover:bg-secondary px-8 py-6 text-lg w-full sm:w-auto"
             >
