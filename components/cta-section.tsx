@@ -40,7 +40,7 @@ export function CTASection() {
 
           {/* Contact Info */}
           <div className="relative z-10 mt-12 pt-8 border-t border-border flex flex-wrap items-center justify-center lg:justify-start gap-8">
-            <a href="mailto:info@achterbosch.nl" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="mailto:p.achterbosch@gmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Mail className="w-5 h-5" />
               <span>p.achterbosch@gmail.com</span>
             </a>
