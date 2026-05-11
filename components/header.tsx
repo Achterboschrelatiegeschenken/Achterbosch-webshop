@@ -82,7 +82,7 @@ export function Header() {
                 Contact
               </Link>
               <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                <Button variant="outline" className="w-full border-border text-foreground hover:bg-secondary">
+                <Button  className="w-full border-border text-foreground hover:bg-secondary">
                   Bekijk assortiment
                 </Button>
                 <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">

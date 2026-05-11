@@ -42,7 +42,7 @@ export function HeroSection() {
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
+              
               className="border-border text-foreground hover:bg-secondary px-8 py-6 text-lg w-full sm:w-auto"
             >
               Offerte aanvragen
