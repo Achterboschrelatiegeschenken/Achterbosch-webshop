@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Card, CardContent } from "./ui/card"
 import { ArrowUpRight, Key, Wine, Disc } from "lucide-react"
 
@@ -6,19 +7,22 @@ const categories = [
     title: "Sleutelhangers",
     description: "Gegraveerde sleutelhangers in diverse materialen en vormen. Perfect voor evenementen en promoties.",
     icon: Key,
-    image: "/images/sleutelhangers.jpg"
+    image: "/images/sleutelhangers.jpg",
+    href: "/sleutelhangers"
   },
   {
     title: "Flesopeners",
     description: "Stijlvolle flesopeners met uw logo. Ideaal relatiegeschenk voor horeca en evenementen.",
     icon: Wine,
-    image: "/images/flesopeners.jpg"
+    image: "/images/flesopeners.jpg",
+    href: "/flesopeners"
   },
   {
     title: "Onderzetters",
     description: "Elegante onderzetters met lasergravure. Perfect voor restaurants, cafés en zakelijke geschenken.",
     icon: Disc,
-    image: "/images/onderzetters.jpg"
+    image: "/images/onderzetters.jpg",
+    href: "/onderzetters"
   }
 ]
 
@@ -42,6 +46,7 @@ export function CategorySection() {
         {/* Category Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
+            <Link href={category.href}>
             <Card 
               key={index}
               className="group bg-card border-border hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden"
@@ -69,6 +74,7 @@ export function CategorySection() {
                 </div>
               </CardContent>
             </Card>
+            </Link>
           ))}
         </div>
       </div>
