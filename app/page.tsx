@@ -7,7 +7,7 @@ import { Footer } from "../components/footer"
 import { MobileStickyCTA } from "../components/mobile-sticky-cta"
 
 export default function HomePage() {
-  return (
+   return (
     <main className="min-h-screen bg-background">
       <Header />
       <HeroSection />
