@@ -1,5 +1,10 @@
+import { Header } from "../../components/header"
+import { Footer } from "../../components/footer"
 export default function SleutelhangersPage() {
   return (
+  <>
+    <Header />
+
     <main className="min-h-screen bg-background text-foreground py-24 px-6">
       <div className="max-w-7xl mx-auto">
 
@@ -76,6 +81,9 @@ export default function SleutelhangersPage() {
         </div>
 
       </div>
-    </main>
+       </main>
+
+    <Footer />
+  </>
   )
 }

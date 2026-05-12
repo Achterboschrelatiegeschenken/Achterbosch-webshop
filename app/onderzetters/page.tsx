@@ -1,6 +1,12 @@
+import { Header } from "../../components/header"
+import { Footer } from "../../components/footer"
 export default function OnderzettersPage() {
   return (
+  <>
+    <Header />
+
     <main className="min-h-screen bg-background text-foreground py-24 px-6">
+
       <div className="max-w-7xl mx-auto">
 
         <div className="mb-16 text-center">
@@ -87,5 +93,8 @@ className="w-full h-48 object-contain bg-secondary"
 
       </div>
     </main>
+
+    <Footer />
+  </>
   )
 }
