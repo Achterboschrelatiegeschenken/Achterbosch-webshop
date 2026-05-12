@@ -45,11 +45,15 @@ export function Footer() {
               Premium relatiegeschenken met professionele lasergravure voor bedrijven en evenementen.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors">
-                <Facebook className="w-5 h-5 text-muted-foreground hover:text-primary" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors">
-                <Instagram className="w-5 h-5 text-muted-foreground hover:text-primary" />
+<a
+  href="https://www.facebook.com/profile.php?id=61589426590167"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors"
+>                <Facebook className="w-5 h-5 text-muted-foreground hover:text-primary" />
+                
+             
+               <Instagram className="w-5 h-5 text-muted-foreground hover:text-primary" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors">
                 <Linkedin className="w-5 h-5 text-muted-foreground hover:text-primary" />
