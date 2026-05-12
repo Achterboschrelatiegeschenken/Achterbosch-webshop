@@ -4,11 +4,11 @@ import { Facebook, Instagram, Linkedin } from "lucide-react"
 
 const footerLinks = {
   producten: [
-    { label: "Sleutelhangers", href: "#" },
-    { label: "Flesopeners", href: "#" },
-    { label: "Onderzetters", href: "#" },
-    { label: "Pennen", href: "#" },
-    { label: "Relatiegeschenken", href: "#" },
+    { label: "Sleutelhangers", href: "/sleutelhangers" },
+    { label: "Flesopeners", href: "/flesopeners" },
+    { label: "Onderzetters", href: "/onderzetters" },
+    { label: "Pennen", href: "/pennen" },
+    { label: "Relatiegeschenken", href: "/relatiegeschenken" },
   ],
   bedrijf: [
     { label: "Over ons", href: "#over-ons" },
