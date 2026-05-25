@@ -10,19 +10,31 @@ export function Header() {
   const [cartCount, setCartCount] = useState(0)
 
   useEffect(() => {
+  const updateCartCount = () => {
     const storedCart = localStorage.getItem("cart")
 
     if (storedCart) {
-      const cart = JSON.parse(storedCart)
+      const parsedCart = JSON.parse(storedCart)
 
-      const totalItems = cart.reduce(
+      const totalItems = parsedCart.reduce(
         (total: number, product: any) => total + product.quantity,
         0
       )
 
       setCartCount(totalItems)
+    } else {
+      setCartCount(0)
     }
-  }, [])
+  }
+
+  updateCartCount()
+
+  window.addEventListener("cartUpdated", updateCartCount)
+
+  return () => {
+    window.removeEventListener("cartUpdated", updateCartCount)
+  }
+}, [])
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
