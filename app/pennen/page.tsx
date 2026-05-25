@@ -54,7 +54,7 @@ className="w-full h-48 object-contain bg-secondary"
     onClick={() =>
       addToCart({
         name: "Houten pen",
-        price: 9.95,
+        price: 7.95,
         image: "/pen.jpeg",
       })
     }
