@@ -118,7 +118,7 @@ onChange={(e) => setName(e.target.value)}
   
 {success && (
   <div className="bg-green-500/10 border border-green-500/30 text-green-400 rounded-2xl p-4 mt-4">
-    Offerte aanvraag succesvol verzonden 😄
+    Aanvraag succesvol verzonden 😄
   </div>
 )}
         </form>
