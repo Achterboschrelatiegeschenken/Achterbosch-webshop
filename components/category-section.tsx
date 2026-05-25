@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent } from "./ui/card"
-import { ArrowUpRight, Key, Wine, Disc } from "lucide-react"
+import { ArrowUpRight, Key, Wine, Disc, Pen } from "lucide-react"
 
 const categories = [
   {
@@ -23,7 +23,14 @@ const categories = [
     icon: Disc,
     image: "/images/onderzetters.jpg",
     href: "/onderzetters"
-  }
+  },
+  {
+  title: "Pennen",
+  description: "Luxe houten pennen met professionele lasergravure.",
+  icon: Pen,
+  image: "/images/pen.jpg",
+  href: "/pennen"
+},
 ]
 
 export function CategorySection() {
