@@ -40,13 +40,12 @@ export function HeroSection() {
               Bekijk assortiment
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button 
-          
-              
-            className="border-border text-foreground hover:bg-secondary px-8 py-6 text-lg w-full sm:w-auto"
-            >
-              Offerte aanvragen
-            </Button>
+            <a
+  href="/offerte"
+  className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg"
+>
+  Offerte aanvragen
+</a>
           </div>
 
           {/* Trust Indicators */}

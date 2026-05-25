@@ -1,10 +1,28 @@
 "use client"
 import Image from "next/image"
-import { useState } from "react"
+
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "./ui/button"
+import { ShoppingCart } from "lucide-react"
+import { useEffect, useState } from "react"
 export function Header() {
+  const [cartCount, setCartCount] = useState(0)
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart")
+
+    if (storedCart) {
+      const cart = JSON.parse(storedCart)
+
+      const totalItems = cart.reduce(
+        (total: number, product: any) => total + product.quantity,
+        0
+      )
+
+      setCartCount(totalItems)
+    }
+  }, [])
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -38,12 +56,26 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button className="border-border text-foreground hover:bg-secondary">
-              Bekijk assortiment
-            </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Offerte aanvragen
-            </Button>
+            <Link
+  href="/winkelwagen"
+  className="relative flex items-center gap-2 border border-border px-4 py-2 rounded-lg hover:bg-secondary transition"
+>
+  <ShoppingCart className="w-5 h-5" />
+
+  <span>Winkelwagen</span>
+
+  {cartCount > 0 && (
+    <div className="absolute -top-2 -right-2 bg-primary text-white text-xs w-6 h-6 rounded-full flex items-center justify-center">
+      {cartCount}
+    </div>
+  )}
+</Link>
+            <a
+  href="/offerte"
+  className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg"
+>
+  Offerte aanvragen
+</a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,9 +117,12 @@ export function Header() {
                 <Button  className="w-full border-border text-foreground hover:bg-secondary">
                   Bekijk assortiment
                 </Button>
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  Offerte aanvragen
-                </Button>
+                <a
+  href="/offerte"
+  className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg"
+>
+  Offerte aanvragen
+</a>
               </div>
             </nav>
           </div>

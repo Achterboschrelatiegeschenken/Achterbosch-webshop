@@ -1,5 +1,11 @@
+import { Header } from "../../components/header"
+import { Footer } from "../../components/footer"
 export default function OffertePage() {
+ 
   return (
+  <>
+    <Header />
+
     <main className="min-h-screen bg-background text-foreground p-8">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-6">
@@ -33,10 +39,12 @@ export default function OffertePage() {
           />
 
           <select className="w-full p-4 rounded bg-card border border-border">
-            <option>Gegraveerde flesopener</option>
+            <option>flesopeners</option>
             <option>Kurken onderzetters</option>
-            <option>3D geprint product</option>
+            <option>Houten onderzetters</option>
             <option>Sleutelhangers</option>
+            <option>Pennen</option>
+            <option>Borrelplank</option>
             <option>Overig</option>
           </select>
 
@@ -60,6 +68,9 @@ export default function OffertePage() {
 
         </form>
       </div>
-    </main>
+       </main>
+
+    <Footer />
+  </>
   )
 }

@@ -1,3 +1,6 @@
+"use client"
+
+import { addToCart } from "../../lib/cart"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
 export default function SleutelhangersPage() {
@@ -36,9 +39,29 @@ export default function SleutelhangersPage() {
                 Luxe houten sleutelhanger met nauwkeurige lasergravure.
               </p>
 
-              <button className="mt-auto bg-primary text-white px-6 py-3 rounded-lg">
-                Offerte aanvragen
-              </button>
+              <div className="flex gap-3 mt-auto">
+
+  <a
+    href="/offerte"
+    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
+  >
+    Offerte
+  </a>
+
+  <button
+    onClick={() =>
+      addToCart({
+        name: "Houten sleutelhanger",
+        price: 4.95,
+        image: "/products/sleutelhanger-hout.jpeg",
+      })
+    }
+    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
+  >
+    Winkelwagen
+  </button>
+
+</div>
             </div>
           </div>
 
@@ -54,9 +77,29 @@ export default function SleutelhangersPage() {
                 Duurzame sleutelhangers van Leer met gravure.
               </p>
 
-              <button className="bg-primary text-white px-6 py-3 rounded-lg">
-                Offerte aanvragen
-              </button>
+              <div className="flex gap-3 mt-auto">
+
+  <a
+    href="/offerte"
+    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
+  >
+    Offerte
+  </a>
+
+  <button
+    onClick={() =>
+      addToCart({
+        name: "Leren Sleutelhanger",
+        price: 7.95,
+        image: "/products/sleutelhanger-leer.jpeg",
+      })
+    }
+    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
+  >
+    Winkelwagen
+  </button>
+
+</div>
             </div>
           </div>
 
@@ -72,9 +115,29 @@ export default function SleutelhangersPage() {
                 Moderne sleutelhangers met strakke afwerking.
               </p>
 
-              <button className="bg-primary text-white px-6 py-3 rounded-lg">
-                Offerte aanvragen
-              </button>
+             <div className="flex gap-3 mt-auto">
+
+  <a
+    href="/offerte"
+    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
+  >
+    Offerte
+  </a>
+
+  <button
+    onClick={() =>
+      addToCart({
+        name: "Acryl Sleutelhanger",
+        price: 6.95,
+        image: "/products/sleutelhanger-acryl.jpeg",
+      })
+    }
+    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
+  >
+    Winkelwagen
+  </button>
+
+</div>
             </div>
           </div>
 

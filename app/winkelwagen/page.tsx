@@ -1,0 +1,173 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { Header } from "../../components/header"
+import { Footer } from "../../components/footer"
+
+export default function WinkelwagenPage() {
+  const [cart, setCart] = useState<any[]>([])
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart")
+
+    if (storedCart) {
+      setCart(JSON.parse(storedCart))
+    }
+  }, [])
+const totalPrice = cart.reduce(
+    
+  (total, product) => total + product.price * product.quantity,
+  0
+)
+const shippingCost = totalPrice >= 50 ? 0 : 6.95
+
+const grandTotal = totalPrice + shippingCost
+  return (
+    <>
+      <Header />
+
+      <main className="min-h-screen bg-background text-foreground py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+
+          <h1 className="text-5xl font-bold mb-12">
+            Winkelwagen
+          </h1>
+
+         {cart.length === 0 ? (
+  <div className="bg-card border border-border rounded-2xl p-8">
+    <p className="text-muted-foreground">
+      Je winkelwagen is momenteel leeg.
+    </p>
+  </div>
+) : (
+  <>
+    <div className="space-y-6">
+
+      {cart.map((product, index) => (
+        <div
+          key={index}
+          className="bg-card border border-border rounded-2xl p-6 flex items-center gap-6"
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-24 h-24 object-contain bg-secondary rounded-lg"
+          />
+
+          <div className="flex-1">
+            <h2 className="text-2xl font-semibold">
+              {product.name}
+            </h2>
+
+            <div className="flex items-center gap-4 mt-2">
+
+              <button
+                onClick={() => {
+                  const updatedCart = [...cart]
+
+                  if (updatedCart[index].quantity > 1) {
+                    updatedCart[index].quantity -= 1
+
+                    setCart(updatedCart)
+
+                    localStorage.setItem("cart", JSON.stringify(updatedCart))
+                  }
+                }}
+                className="bg-secondary px-3 py-1 rounded-lg"
+              >
+                -
+              </button>
+
+              <p className="text-muted-foreground">
+                {product.quantity}
+              </p>
+
+              <button
+                onClick={() => {
+                  const updatedCart = [...cart]
+
+                  updatedCart[index].quantity += 1
+
+                  setCart(updatedCart)
+
+                  localStorage.setItem("cart", JSON.stringify(updatedCart))
+                }}
+                className="bg-primary text-white px-3 py-1 rounded-lg"
+              >
+                +
+              </button>
+
+            </div>
+
+            <p className="text-muted-foreground mt-2">
+              € {(product.price * product.quantity).toFixed(2)}
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              const updatedCart = cart.filter((_, i) => i !== index)
+
+              setCart(updatedCart)
+
+              localStorage.setItem("cart", JSON.stringify(updatedCart))
+            }}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+          >
+            Verwijderen
+          </button>
+        </div>
+      ))}
+
+    </div>
+{totalPrice < 50 && (
+  <div className="mb-6 bg-red-500/10 border border-white-500/30 text-white-400 rounded-2xl p-4">
+    Nog € {(50 - totalPrice).toFixed(2)} besteden voor gratis verzending 🚚
+  </div>
+)}
+    <div className="mt-10 flex justify-between items-center bg-card border border-border rounded-2xl p-6">
+      <h2 className="text-2xl font-bold">
+        Totaal
+      </h2>
+
+      <p className="text-2xl font-bold text-primary">
+        € {totalPrice.toFixed(2)}
+      </p>
+    </div>
+    <div className="mt-4 bg-card border border-border rounded-2xl p-6 flex justify-between items-center">
+  <h2 className="text-xl font-semibold">
+    Verzendkosten
+  </h2>
+
+  <p className="text-xl font-semibold">
+    € {shippingCost.toFixed(2)}
+  </p>
+</div>
+
+<div className="mt-4 bg-primary text-white rounded-2xl p-6 flex justify-between items-center">
+  <h2 className="text-2xl font-bold">
+    Totaalbedrag
+  </h2>
+
+  <p className="text-2xl font-bold">
+    € {grandTotal.toFixed(2)}
+  </p>
+</div>
+<a
+  href="/checkout"
+  className="mt-6 block text-center bg-primary text-white py-4 rounded-2xl text-lg font-semibold hover:opacity-90 transition"
+>
+  Doorgaan naar afrekenen
+</a>
+  </>
+)}
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  )
+} 
+
+
+  

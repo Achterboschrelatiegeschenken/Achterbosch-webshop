@@ -1,3 +1,6 @@
+"use client"
+
+import { addToCart } from "../../lib/cart"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
 export default function OnderzettersPage() {
@@ -37,9 +40,29 @@ className="w-full h-48 object-contain bg-secondary"
                 Duurzame kurken onderzetters met strakke gravure.
               </p>
 
-              <button className="mt-auto bg-primary text-white px-6 py-3 rounded-lg">              
-                Offerte aanvragen
-              </button>
+            <div className="flex gap-3 mt-auto">
+
+  <a
+    href="/offerte"
+    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
+  >
+    Offerte
+  </a>
+
+  <button
+    onClick={() =>
+      addToCart({
+        name: "kurken Onderzetter",
+        price: 9.95,
+        image: "/products/onderzetter-kurk.jpeg",
+      })
+    }
+    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
+  >
+    Winkelwagen
+  </button>
+
+</div>
             </div>
           </div>
 
@@ -60,9 +83,29 @@ className="w-full h-48 object-contain bg-secondary"
                 Luxe houten onderzetters voor horeca en bedrijven.
               </p>
 
-              <button className="bg-primary text-white px-6 py-3 rounded-lg">
-                Offerte aanvragen
-              </button>
+              <div className="flex gap-3 mt-auto">
+
+  <a
+    href="/offerte"
+    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
+  >
+    Offerte
+  </a>
+
+  <button
+    onClick={() =>
+      addToCart({
+        name: "Houten Onderzetter",
+        price: 9.95,
+        image: "/products/onderzetter hout.jpeg",
+      })
+    }
+    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
+  >
+    Winkelwagen
+  </button>
+
+</div>
             </div>
           </div>
 
@@ -83,9 +126,29 @@ className="w-full h-48 object-contain bg-secondary"
                 Stijlvolle leisteen onderzetters met diepe gravure.
               </p>
 
-              <button className="bg-primary text-white px-6 py-3 rounded-lg">
-                Offerte aanvragen
-              </button>
+             <div className="flex gap-3 mt-auto">
+
+  <a
+    href="/offerte"
+    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
+  >
+    Offerte
+  </a>
+
+  <button
+    onClick={() =>
+      addToCart({
+        name: "Leisteen Onderzetter",
+        price: 9.95,
+        image: "/products/onderzetter-leisteen.jpeg",
+      })
+    }
+    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
+  >
+    Winkelwagen
+  </button>
+
+</div>
             </div>
           </div>
 
