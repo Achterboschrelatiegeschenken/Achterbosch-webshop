@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-email/render": "^2.0.8",
     "lucide-react": "^0.564.0",
     "next": "^15.0.0",
     "react": "^19.0.0",
