@@ -4,6 +4,7 @@ import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
 import { useEffect, useState } from "react"
 import { Upload } from "lucide-react"
+import { Trash2 } from "lucide-react"
 
 export default function CheckoutPage() {
   const [success, setSuccess] = useState(false)
@@ -212,10 +213,21 @@ const grandTotal = totalPrice + shippingCost
     
 
   {logo && (
-    <p className="mt-2 text-sm text-muted-foreground">
-      Geselecteerd bestand: {logo.name}
+  <div className="mt-4 flex items-center justify-between bg-secondary rounded-xl p-4">
+
+    <p className="text-sm text-muted-foreground">
+      {logo.name}
     </p>
-  )}
+
+    <button
+      onClick={() => setLogo(null)}
+      className="text-red-500 hover:text-red-600 transition"
+    >
+      <Trash2 className="w-7 h-7" />
+    </button>
+
+  </div>
+)}
 </div>
             <button
   onClick={async () => {
