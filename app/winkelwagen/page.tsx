@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
+import { Trash2 } from "lucide-react"
 
 export default function WinkelwagenPage() {
   const [cart, setCart] = useState<any[]>([])
@@ -110,18 +111,19 @@ const grandTotal = totalPrice + shippingCost
           </div>
 
           <button
-            onClick={() => {
-              const updatedCart = cart.filter((_, i) => i !== index)
+  onClick={() => {
+    const updatedCart = cart.filter((_, i) => i !== index)
 
-              setCart(updatedCart)
+    setCart(updatedCart)
 
-              localStorage.setItem("cart", JSON.stringify(updatedCart))
-              window.dispatchEvent(new Event("cartUpdated"))
-            }}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-          >
-            Verwijderen
-          </button>
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+
+    window.dispatchEvent(new Event("cartUpdated"))
+  }}
+  className="text-red-500 hover:text-red-600 transition"
+>
+  <Trash2 className="w-6 h-6" />
+</button>
         </div>
       ))}
 
