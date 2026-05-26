@@ -3,10 +3,13 @@
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
 import { useEffect, useState } from "react"
+import { Upload } from "lucide-react"
 
 export default function CheckoutPage() {
   const [success, setSuccess] = useState(false)
   const [name, setName] = useState("")
+  const [company, setCompany] = useState("")
+const [vatNumber, setVatNumber] = useState("")
 const [email, setEmail] = useState("")
 const [phone, setPhone] = useState("")
 const [address, setAddress] = useState("")
@@ -102,7 +105,20 @@ const grandTotal = totalPrice + shippingCost
   onChange={(e) => setName(e.target.value)}
               className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
             />
-
+<input
+  type="text"
+  placeholder="Bedrijfsnaam"
+  value={company}
+  onChange={(e) => setCompany(e.target.value)}
+  className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
+/>
+<input
+  type="text"
+  placeholder="BTW-nummer"
+  value={vatNumber}
+  onChange={(e) => setVatNumber(e.target.value)}
+  className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
+/>
             <input
               type="email"
               placeholder="E-mailadres"
@@ -156,6 +172,9 @@ const grandTotal = totalPrice + shippingCost
     Upload je logo
   </label>
 
+
+    
+<label className="cursor-pointer">
   <input
     type="file"
     accept="image/*,.pdf,.ai,.eps"
@@ -164,8 +183,33 @@ const grandTotal = totalPrice + shippingCost
         setLogo(e.target.files[0])
       }
     }}
-    className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
+    className="hidden"
   />
+
+  <div className="border-2 border-dashed border-border rounded-2xl p-8 text-center bg-card hover:border-primary transition">
+
+    <div className="flex flex-col items-center gap-4">
+
+      <div className="bg-secondary p-4 rounded-full">
+        <Upload className="w-8 h-8 text-primary" />
+      </div>
+
+      <div>
+        <p className="text-lg font-semibold">
+          Upload uw logo of ontwerp
+        </p>
+
+        <p className="text-muted-foreground text-sm mt-1">
+          PNG, JPG, SVG, PDF, AI of EPS bestanden
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</label>
+    
 
   {logo && (
     <p className="mt-2 text-sm text-muted-foreground">
@@ -175,23 +219,30 @@ const grandTotal = totalPrice + shippingCost
 </div>
             <button
   onClick={async () => {
-  const response = await fetch("/api/order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      phone,
-      address,
-      postalCode,
-      city,
-      notes,
-      cart,
-      grandTotal,
-      logoName: logo?.name || null,
-    }),
+  const formData = new FormData()
+
+formData.append("name", name)
+formData.append("company", company)
+formData.append("vatNumber", vatNumber)
+formData.append("email", email)
+formData.append("phone", phone)
+formData.append("address", address)
+formData.append("postalCode", postalCode)
+formData.append("city", city)
+formData.append("notes", notes)
+
+formData.append("grandTotal", grandTotal.toString())
+
+formData.append("cart", JSON.stringify(cart))
+
+if (logo) {
+  formData.append("logo", logo)
+}
+
+const response = await fetch("/api/order", {
+  method: "POST",
+  body: formData,
+
   })
 
   const data = await response.json()
