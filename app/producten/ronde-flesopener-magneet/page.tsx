@@ -123,7 +123,7 @@ export default function RondeFlesopenerMagneetPage() {
                   addToCart({
                     name: "Ronde Flesopener met Magneet",
                     price: 8.95,
-                    image: "/flesopener-rond-1.jpeg",
+                    image: "/products/flesopener-rond-1.jpeg",
                     
                   })
 

@@ -143,9 +143,9 @@ export default function ProductPage() {
                 <button
                   onClick={() => {
                     addToCart({
-                      name: "Productnaam",
+                      name: "Onderzetter Hout",
                       price: 8.95,
-                      image: "/products/product-1.jpeg",
+                      image: "/products/onderzetter-hout.jpeg",
                     })
 
                     window.location.href = "/winkelwagen"

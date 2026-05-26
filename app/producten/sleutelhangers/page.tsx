@@ -140,9 +140,9 @@ export default function ProductPage() {
                 <button
                   onClick={() => {
                     addToCart({
-                      name: "Productnaam",
+                      name: "Houten Sleutelhanger",
                       price: 4.95,
-                      image: "/products/product-1.jpeg",
+                      image: "/products/sleutelhanger-hout.jpeg",
                     })
 
                     window.location.href = "/winkelwagen"

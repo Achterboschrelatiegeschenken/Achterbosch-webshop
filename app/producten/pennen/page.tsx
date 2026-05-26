@@ -123,7 +123,7 @@ export default function PennenPage() {
                   addToCart({
                     name: "Gegraveerde Pen",
                     price: 4.95,
-                    image: "/products/pen-1.jpeg",
+                    image: "/products/pen.jpeg",
                   })
 
                   window.location.href = "/winkelwagen"
