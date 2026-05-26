@@ -5,6 +5,7 @@ import { FeaturesSection } from "../components/features-section"
 import { CTASection } from "../components/cta-section"
 import { Footer } from "../components/footer"
 import { MobileStickyCTA } from "../components/mobile-sticky-cta"
+import Link from "next/link"
 
 export default function HomePage() {
    return (

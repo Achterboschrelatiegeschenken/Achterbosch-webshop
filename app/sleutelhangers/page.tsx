@@ -3,6 +3,8 @@
 import { addToCart } from "../../lib/cart"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
+import Link from "next/link"
+
 export default function SleutelhangersPage() {
   return (
   <>
@@ -24,7 +26,9 @@ export default function SleutelhangersPage() {
 
         <div className="grid md:grid-cols-3 gap-8 items-start">
 
-<div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">            <img
+<Link href="/producten/sleutelhangers">
+  <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">         
+   <img
   src="/products/sleutelhanger-hout.jpeg"
   alt="Houten sleutelhanger"
   className="w-full h-48 object-contain bg-secondary"
@@ -39,32 +43,10 @@ export default function SleutelhangersPage() {
                 Luxe houten sleutelhanger met nauwkeurige lasergravure.
               </p>
 
-              <div className="flex gap-3 mt-auto">
-
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "Houten sleutelhanger",
-        price: 4.95,
-        image: "/products/sleutelhanger-hout.jpeg",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
+             
             </div>
           </div>
-
+</Link>
           <div className="bg-card border border-border rounded-2xl overflow-hidden">
             <div className="h-64 bg-secondary"></div>
 
@@ -77,30 +59,7 @@ export default function SleutelhangersPage() {
                 Duurzame sleutelhangers van Leer met gravure.
               </p>
 
-              <div className="flex gap-3 mt-auto">
-
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "Leren Sleutelhanger",
-        price: 7.95,
-        image: "/products/sleutelhanger-leer.jpeg",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
-            </div>
+                         </div>
           </div>
 
           <div className="bg-card border border-border rounded-2xl overflow-hidden">
@@ -115,29 +74,7 @@ export default function SleutelhangersPage() {
                 Moderne sleutelhangers met strakke afwerking.
               </p>
 
-             <div className="flex gap-3 mt-auto">
-
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "Acryl Sleutelhanger",
-        price: 6.95,
-        image: "/products/sleutelhanger-acryl.jpeg",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
+             
             </div>
           </div>
 

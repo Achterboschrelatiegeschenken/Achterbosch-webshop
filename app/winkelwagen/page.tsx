@@ -62,21 +62,25 @@ const grandTotal = totalPrice + shippingCost
             <div className="flex items-center gap-4 mt-2">
 
               <button
-                onClick={() => {
-                  const updatedCart = [...cart]
+  onClick={() => {
+    const updatedCart = [...cart]
 
-                  if (updatedCart[index].quantity > 1) {
-                    updatedCart[index].quantity -= 1
+    if (updatedCart[index].quantity > 1) {
+      updatedCart[index].quantity -= 1
+    } else {
+      updatedCart.splice(index, 1)
+    }
 
-                    setCart(updatedCart)
+    setCart(updatedCart)
 
-                    localStorage.setItem("cart", JSON.stringify(updatedCart))
-                  }
-                }}
-                className="bg-secondary px-3 py-1 rounded-lg"
-              >
-                -
-              </button>
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+
+    window.dispatchEvent(new Event("cartUpdated"))
+  }}
+  className="bg-secondary px-3 py-1 rounded-lg"
+>
+  -
+</button>
 
               <p className="text-muted-foreground">
                 {product.quantity}
@@ -91,6 +95,7 @@ const grandTotal = totalPrice + shippingCost
                   setCart(updatedCart)
 
                   localStorage.setItem("cart", JSON.stringify(updatedCart))
+                  window.dispatchEvent(new Event("cartUpdated"))
                 }}
                 className="bg-primary text-white px-3 py-1 rounded-lg"
               >
@@ -111,6 +116,7 @@ const grandTotal = totalPrice + shippingCost
               setCart(updatedCart)
 
               localStorage.setItem("cart", JSON.stringify(updatedCart))
+              window.dispatchEvent(new Event("cartUpdated"))
             }}
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
           >
@@ -158,6 +164,12 @@ const grandTotal = totalPrice + shippingCost
   className="mt-6 block text-center bg-primary text-white py-4 rounded-2xl text-lg font-semibold hover:opacity-90 transition"
 >
   Doorgaan naar afrekenen
+</a>
+<a
+  href="/#assortiment"
+  className="mt-4 block text-center border border-border py-4 rounded-2xl text-lg font-semibold hover:bg-secondary transition"
+>
+  Verder winkelen
 </a>
   </>
 )}

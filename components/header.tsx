@@ -90,14 +90,35 @@ export function Header() {
 </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Actions */}
+<div className="lg:hidden flex items-center gap-3">
+
+  <Link
+    href="/winkelwagen"
+    className="relative p-2"
+  >
+    <ShoppingCart className="w-6 h-6 text-foreground" />
+
+    {cartCount > 0 && (
+      <div className="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+        {cartCount}
+      </div>
+    )}
+  </Link>
+
+  <button
+    className="p-2 text-foreground"
+    onClick={() => setIsMenuOpen(!isMenuOpen)}
+    aria-label="Toggle menu"
+  >
+    {isMenuOpen ? (
+      <X className="w-6 h-6" />
+    ) : (
+      <Menu className="w-6 h-6" />
+    )}
+  </button>
+
+</div>
         </div>
 
         {/* Mobile Menu */}

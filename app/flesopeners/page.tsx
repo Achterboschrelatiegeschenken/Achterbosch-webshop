@@ -3,6 +3,8 @@
 import { addToCart } from "../../lib/cart"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
+import Link from "next/link"
+
 export default function OnderzettersPage() {
   return (
   <>
@@ -24,12 +26,53 @@ export default function OnderzettersPage() {
         </div>
 
 <div className="grid md:grid-cols-3 gap-8 auto-rows-fr">
-<div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">            
-            <img
-              src="/products/flesopenerhout.JPG"
-              alt="houten flesopener"
-className="w-full h-48 object-contain bg-secondary"
-            />
+
+  <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">
+
+    <Link href="/producten/houten-flesopener">
+      <img
+        src="/products/flesopenerhout.JPG"
+        alt="houten flesopener"
+        className="w-full h-48 object-contain bg-secondary"
+      />
+    </Link>
+
+    <div className="p-6">
+      <h3 className="text-2xl font-bold">
+        Houten Flesopener
+      </h3>
+
+      <p className="text-muted-foreground mt-2">
+        Luxe flesopeners met gepersonaliseerde lasergravure.
+      </p>
+    </div>
+
+  </div>
+
+  <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">
+
+    <Link href="/producten/ronde-flesopener-magneet">
+      <img
+        src="/products/flesopener-rond-1.jpeg"
+        alt="Ronde Flesopener met Magneet"
+        className="w-full h-48 object-contain bg-secondary"
+      />
+    </Link>
+
+    <div className="p-6">
+      <h3 className="text-2xl font-bold">
+        Ronde Flesopener met Magneet
+      </h3>
+
+      <p className="text-muted-foreground mt-2">
+        Luxe ronde flesopener met magnetische achterkant.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
 
            
 
@@ -37,41 +80,14 @@ className="w-full h-48 object-contain bg-secondary"
 
         
 
-          <div className="bg-card border border-border rounded-2xl overflow-hidden">
+          
 
-           
+ 
+   
 
-             <div className="flex gap-3 mt-auto">
 
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "Houten Flesopener",
-        price: 9.95,
-        image: "/products/flesopenerhout.JPG",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </main>
-
+ </div>   
+</main>
     <Footer />
   </>
   )

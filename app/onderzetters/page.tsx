@@ -3,6 +3,7 @@
 import { addToCart } from "../../lib/cart"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
+import Link from "next/link"
 export default function OnderzettersPage() {
   return (
   <>
@@ -24,7 +25,8 @@ export default function OnderzettersPage() {
         </div>
 
 <div className="grid md:grid-cols-3 gap-8 auto-rows-fr">
-<div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">            
+<Link href="/producten/kurken-onderzetter">
+  <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">        
             <img
               src="/products/onderzetter-kurk.jpeg"
               alt="Kurken onderzetter"
@@ -40,33 +42,12 @@ className="w-full h-48 object-contain bg-secondary"
                 Duurzame kurken onderzetters met strakke gravure.
               </p>
 
-            <div className="flex gap-3 mt-auto">
-
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "kurken Onderzetter",
-        price: 9.95,
-        image: "/products/onderzetter-kurk.jpeg",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
+           
             </div>
           </div>
-
-          <div className="bg-card border border-border rounded-2xl overflow-hidden">
+</Link>
+          <Link href="/producten/houten-onderzetter">
+  <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">
 
             <img
               src="/products/onderzetter-hout.jpeg"
@@ -83,33 +64,12 @@ className="w-full h-48 object-contain bg-secondary"
                 Luxe houten onderzetters voor horeca en bedrijven.
               </p>
 
-              <div className="flex gap-3 mt-auto">
-
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "Houten Onderzetter",
-        price: 9.95,
-        image: "/products/onderzetter hout.jpeg",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
+              
             </div>
           </div>
-
-          <div className="bg-card border border-border rounded-2xl overflow-hidden">
+</Link>
+         <Link href="/producten/leisteen-onderzetter">
+  <div className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col h-full">
 
             <img
               src="/products/onderzetter-leisteen.jpeg"
@@ -126,35 +86,14 @@ className="w-full h-48 object-contain bg-secondary"
                 Stijlvolle leisteen onderzetters met diepe gravure.
               </p>
 
-             <div className="flex gap-3 mt-auto">
-
-  <a
-    href="/offerte"
-    className="flex-1 text-center bg-secondary text-foreground px-6 py-3 rounded-lg"
-  >
-    Offerte
-  </a>
-
-  <button
-    onClick={() =>
-      addToCart({
-        name: "Leisteen Onderzetter",
-        price: 9.95,
-        image: "/products/onderzetter-leisteen.jpeg",
-      })
-    }
-    className="flex-1 bg-primary text-white px-6 py-3 rounded-lg"
-  >
-    Winkelwagen
-  </button>
-
-</div>
+            
             </div>
           </div>
-
+</Link>
         </div>
 
       </div>
+      
     </main>
 
     <Footer />
