@@ -1,5 +1,6 @@
 import { Button } from "./ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -33,13 +34,13 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg w-full sm:w-auto"
-            >
-              Bekijk assortiment
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            <Link
+  href="#assortiment"
+  className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg w-full sm:w-auto inline-flex items-center justify-center rounded-2xl"
+>
+  Bekijk assortiment
+  <ArrowRight className="ml-2 w-5 h-5" />
+</Link>
             <a
   href="/offerte"
   className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg"

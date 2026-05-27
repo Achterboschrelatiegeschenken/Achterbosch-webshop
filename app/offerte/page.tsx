@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
+import { useRouter } from "next/navigation"
+
 export default function OffertePage() {
  const [name, setName] = useState("")
  const [company, setCompany] = useState("")
@@ -12,6 +14,8 @@ const [quantity, setQuantity] = useState("")
 const [message, setMessage] = useState("")
 const [product, setProduct] = useState("")
 const [success, setSuccess] = useState(false)
+const router = useRouter()
+
   return (
   <>
     <Header />
@@ -22,40 +26,56 @@ const [success, setSuccess] = useState(false)
           Offerte aanvragen
         </h1>
 
-        <form className="space-y-6">
-
+        <div className="space-y-6">
+<div>
+  <label className="block mb-2 font-semibold">
+    Naam <span className="text-red-500">*</span>
+  </label>
           <input
             type="text"
-            placeholder="Naam"
+            placeholder="Naam (verplicht)"
+            required
             value={name}
 onChange={(e) => setName(e.target.value)}
             className="w-full p-4 rounded bg-card border border-border"
           />
+          </div>
 
           <input
             type="text"
-            placeholder="Bedrijfsnaam"
+            placeholder="Bedrijfsnaam (Optioneel)"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
             className="w-full p-4 rounded bg-card border border-border"
           />
-
+<div>
+  <label className="block mb-2 font-semibold">
+    E-mailadres <span className="text-red-500">*</span>
+  </label>
           <input
             type="email"
-            placeholder="E-mailadres"
+            placeholder="E-mailadres (verplicht)"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-4 rounded bg-card border border-border"
           />
+          </div>
 
-          <input
-            type="tel"
-            placeholder="Telefoonnummer"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-full p-4 rounded bg-card border border-border"
-          />
+ <div>
+  <label className="block mb-2 font-semibold">
+    Telefoonnummer <span className="text-red-500">*</span>
+  </label>
 
+  <input
+    type="tel"
+    placeholder="Telefoonnummer (verplicht)"
+    required
+    value={phone}
+    onChange={(e) => setPhone(e.target.value)}
+    className="w-full p-4 rounded bg-card border border-border"
+  />
+</div>
           <select
             value={product}
             onChange={(e) => setProduct(e.target.value)}
@@ -89,6 +109,10 @@ onChange={(e) => setName(e.target.value)}
          <button
          type="button"
   onClick={async () => {
+    if (!name || !email || !phone) {
+  alert("Vul alle verplichte velden in.")
+  return
+}
     const response = await fetch("/api/offerte", {
       method: "POST",
       headers: {
@@ -117,12 +141,32 @@ onChange={(e) => setName(e.target.value)}
 </button>
   
 {success && (
-  <div className="bg-green-500/10 border border-green-500/30 text-green-400 rounded-2xl p-4 mt-4">
-    Aanvraag succesvol verzonden 😄
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+
+    <div className="bg-card border border-border rounded-2xl p-8 max-w-md w-full text-center">
+
+      <h2 className="text-2xl font-bold mb-4 text-green-400">
+        Offerte succesvol verzonden 😄
+      </h2>
+
+      <p className="text-muted-foreground mb-6">
+        Wij nemen zo snel mogelijk contact met u op.
+      </p>
+
+      <button
+        onClick={() => router.push("/")}
+        className="bg-primary text-white px-6 py-3 rounded-xl w-full"
+      >
+        OK
+      </button>
+
+    </div>
+
   </div>
 )}
-        </form>
-      </div>
+       
+ </div>    
+</div>
        </main>
 
     <Footer />

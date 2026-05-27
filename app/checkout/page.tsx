@@ -5,6 +5,7 @@ import { Footer } from "../../components/footer"
 import { useEffect, useState } from "react"
 import { Upload } from "lucide-react"
 import { Trash2 } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function CheckoutPage() {
   const [success, setSuccess] = useState(false)
@@ -19,6 +20,7 @@ const [city, setCity] = useState("")
 const [notes, setNotes] = useState("")
 const [logo, setLogo] = useState<File | null>(null)
   const [cart, setCart] = useState<any[]>([])
+  const router = useRouter()
 
 useEffect(() => {
   const storedCart = localStorage.getItem("cart")
@@ -98,69 +100,106 @@ const grandTotal = totalPrice + shippingCost
   </div>
 </div>
           <div className="bg-card border border-border rounded-2xl p-8 space-y-6">
+<label className="block mb-2 font-semibold">
+  Volledige naam <span className="text-red-500">*</span>
+</label>
+
+
 
             <input
               type="text"
-              placeholder="Volledige naam"
+              placeholder="Volledige naam "
+              required
                value={name}
   onChange={(e) => setName(e.target.value)}
               className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
             />
 <input
   type="text"
-  placeholder="Bedrijfsnaam"
+  placeholder="Bedrijfsnaam (Optioneel)"
   value={company}
   onChange={(e) => setCompany(e.target.value)}
   className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
 />
+
 <input
   type="text"
-  placeholder="BTW-nummer"
+  placeholder="BTW-nummer (Optioneel)"
   value={vatNumber}
   onChange={(e) => setVatNumber(e.target.value)}
   className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
 />
+<label className="block mb-2 font-semibold">
+  E-mailadres <span className="text-red-500">*</span>
+</label>
             <input
               type="email"
-              placeholder="E-mailadres"
+              placeholder="E-mailadres  "
+              required
                 value={email}
     onChange={(e) => setEmail(e.target.value)}
               className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
             />
-
+<label className="block mb-2 font-semibold">
+  Telefoonnummer <span className="text-red-500">*</span>
+</label>
             <input
               type="tel"
-              placeholder="Telefoonnummer"
+              placeholder="Telefoonnummer "
+              required
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
             />
+<div className="space-y-6">
 
-            <input
-              type="text"
-              placeholder="Straatnaam + huisnummer"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
-            />
+  <div>
+    <label className="block mb-2 font-semibold">
+      Straatnaam + huisnummer <span className="text-red-500">*</span>
+    </label>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <input
-                type="text"
-                placeholder="Postcode"
-                value={postalCode}
-                onChange={(e) => setPostalCode(e.target.value)}
-                className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
-              />
+   <input
+  type="text"
+  placeholder="Straatnaam + huisnummer"
+  required
+  value={address}
+  onChange={(e) => setAddress(e.target.value)}
+  className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
+/>
+  </div>
 
-              <input
-                type="text"
-                placeholder="Plaats"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
-              />
-            </div>
+  <div>
+    <label className="block mb-2 font-semibold">
+      Postcode <span className="text-red-500">*</span>
+    </label>
+
+   <input
+  type="text"
+  placeholder="Postcode"
+  required
+  value={postalCode}
+  onChange={(e) => setPostalCode(e.target.value)}
+  className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
+/>
+  </div>
+
+<div>
+  <label className="block mb-2 font-semibold">
+    Plaats <span className="text-red-500">*</span>
+  </label>
+
+  <input
+    type="text"
+    placeholder="Plaats"
+    required
+    value={city}
+    onChange={(e) => setCity(e.target.value)}
+    className="w-full p-4 rounded-lg bg-secondary border border-border text-black"
+  />
+</div>
+
+
+</div>
 
             <textarea
               placeholder="Opmerkingen bij bestelling"
@@ -230,7 +269,19 @@ const grandTotal = totalPrice + shippingCost
 )}
 </div>
             <button
+            
   onClick={async () => {
+    if (
+  !name ||
+  !email ||
+  !phone ||
+  !address ||
+  !postalCode ||
+  !city
+) {
+  alert("Vul alle verplichte velden in.")
+  return
+}
   const formData = new FormData()
 
 formData.append("name", name)
@@ -271,8 +322,27 @@ const response = await fetch("/api/order", {
   Bestelling afronden
 </button>
 {success && (
-  <div className="bg-green-500/10 border border-green-500/30 text-green-400 rounded-2xl p-4 text-center">
-    Je bestelling is succesvol geplaatst 😄
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+
+    <div className="bg-card border border-border rounded-2xl p-8 max-w-md w-full text-center">
+
+      <h2 className="text-2xl font-bold mb-4 text-green-400">
+        Bestelling succesvol geplaatst 😄
+      </h2>
+
+      <p className="text-muted-foreground mb-6">
+        Wij gaan er zo snel mogelijk mee aan de slag.
+      </p>
+
+      <button
+        onClick={() => router.push("/")}
+        className="bg-primary text-white px-6 py-3 rounded-xl w-full"
+      >
+        OK
+      </button>
+
+    </div>
+
   </div>
 )}
           </div>
