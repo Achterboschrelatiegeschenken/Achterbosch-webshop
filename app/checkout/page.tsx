@@ -29,11 +29,20 @@ useEffect(() => {
     setCart(JSON.parse(storedCart))
   }
 }, [])
+function getPrice(product: any) {
+  if (product.name === "Houten Flesopener") {
+    if (product.quantity >= 50) return 7.95
+    if (product.quantity >= 10) return 8.95
+    return 9.95
+  }
 
+  return product.price
+}
 const totalPrice = cart.reduce(
-  (total, product) => total + product.price * product.quantity,
+  (total, product) => total + getPrice(product) * product.quantity,
   0
 )
+
 
 const shippingCost = totalPrice >= 50 ? 0 : 6.95
 
@@ -73,7 +82,7 @@ const grandTotal = totalPrice + shippingCost
         </div>
 
         <p className="font-semibold">
-          € {(product.price * product.quantity).toFixed(2)}
+          € {(getPrice(product) * product.quantity).toFixed(2)}
         </p>
       </div>
     ))}

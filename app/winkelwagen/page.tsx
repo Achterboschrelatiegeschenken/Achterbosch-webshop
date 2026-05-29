@@ -15,9 +15,17 @@ export default function WinkelwagenPage() {
       setCart(JSON.parse(storedCart))
     }
   }, [])
+  function getPrice(product: any) {
+  if (product.name === "Houten Flesopener") {
+    if (product.quantity >= 50) return 7.95
+    if (product.quantity >= 10) return 8.95
+    return 9.95
+  }
+
+  return product.price
+}
 const totalPrice = cart.reduce(
-    
-  (total, product) => total + product.price * product.quantity,
+  (total, product) => total + getPrice(product) * product.quantity,
   0
 )
 const shippingCost = totalPrice >= 50 ? 0 : 6.95
@@ -59,6 +67,9 @@ const grandTotal = totalPrice + shippingCost
             <h2 className="text-2xl font-semibold">
               {product.name}
             </h2>
+            <p className="text-sm text-muted-foreground">
+  € {getPrice(product).toFixed(2)} per stuk
+</p>
 
             <div className="flex items-center gap-4 mt-2">
 
@@ -106,7 +117,7 @@ const grandTotal = totalPrice + shippingCost
             </div>
 
             <p className="text-muted-foreground mt-2">
-              € {(product.price * product.quantity).toFixed(2)}
+              € {(getPrice(product) * product.quantity).toFixed(2)}
             </p>
           </div>
 
