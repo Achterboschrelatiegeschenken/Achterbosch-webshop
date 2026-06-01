@@ -353,6 +353,10 @@ logoName: logo?.name || "",
   })
 )
 console.log("Mollie response:", data)
+if (!data.checkoutUrl) {
+  alert(JSON.stringify(data))
+  return
+}
 window.location.href = data.checkoutUrl
 }}
 className="w-full bg-primary text-white py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition"
