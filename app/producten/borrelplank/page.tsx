@@ -5,12 +5,13 @@ import { useState } from "react"
 import { Header } from "../../../components/header"
 import { Footer } from "../../../components/footer"
 import { addToCart } from "../../../lib/cart"
+import { Trash2 } from "lucide-react"
 
 export default function BorrelplankPage() {
   const [selectedImage, setSelectedImage] = useState(
     "/products/steenbergen.JPG"
   )
-
+const [logoPreview, setLogoPreview] = useState("")
   return (
     <>
       <Header />
@@ -104,7 +105,50 @@ export default function BorrelplankPage() {
               </p>
 
             </div>
+<div className="bg-card border border-border rounded-2xl p-6 mb-8">
 
+  <h3 className="font-bold text-xl mb-4">
+    Upload uw logo
+  </h3>
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => {
+      const file = e.target.files?.[0]
+
+      if (file) {
+        setLogoPreview(URL.createObjectURL(file))
+      }
+    }}
+    className="w-full"
+  />
+
+</div>
+{logoPreview && (
+  <div className="bg-card border border-border rounded-2xl p-6 mb-8">
+
+    <div className="flex items-center justify-between mb-4">
+      <h3 className="font-bold text-xl">
+        Voorbeeld van uw logo
+      </h3>
+
+      <button
+        onClick={() => setLogoPreview("")}
+        className="text-red-500 hover:text-red-600 transition"
+      >
+        <Trash2 className="w-6 h-6" />
+      </button>
+    </div>
+
+    <img
+      src={logoPreview}
+      alt="Logo preview"
+      className="max-w-[250px] rounded-xl border border-border"
+    />
+
+  </div>
+)}
             <div className="flex flex-col sm:flex-row gap-4">
 
               <button
