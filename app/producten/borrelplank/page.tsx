@@ -136,17 +136,19 @@ const fileInputRef = useRef<HTMLInputElement>(null)
         src={logoPreview}
         alt="Logo preview"
         className="
-          absolute
-          top-[46%]
-          left-[40%]
-          w-60
-          opacity-80
-          grayscale
-          mix-blend-multiply
-          -translate-x-1/2
-          -translate-y-1/2
-          pointer-events-none
-        "
+  absolute
+  top-[46%]
+  left-[43%]
+  w-48
+  sm:w-32
+  md:w-64
+  opacity-50
+  grayscale
+  mix-blend-multiply
+  -translate-x-1/2
+  -translate-y-1/2
+  pointer-events-none
+"
       />
     )}
   </div>

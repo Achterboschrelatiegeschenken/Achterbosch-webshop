@@ -60,11 +60,11 @@ export function CategorySection() {
         {/* Category Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
-            <Link href={category.href}>
-            <Card 
-              key={index}
-              className="group bg-card border-border hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden"
-            >
+           <Link
+  key={category.href}
+  href={category.href}
+>
+  <Card className="group bg-card border-border hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden">
               <CardContent className="p-0">
                 {/* Image Area */}
                 <div className="relative h-48 bg-secondary overflow-hidden">

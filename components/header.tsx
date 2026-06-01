@@ -55,13 +55,13 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <Link href="#assortiment" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/#assortiment" className="text-muted-foreground hover:text-foreground transition-colors">
               Assortiment
             </Link>
-            <Link href="#over-ons" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/#over-ons" className="text-muted-foreground hover:text-foreground transition-colors">
               Over ons
             </Link>
-            <Link href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/#contact" className="text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </Link>
           </nav>
@@ -126,21 +126,21 @@ export function Header() {
           <div className="lg:hidden py-4 border-t border-border">
             <nav className="flex flex-col gap-4">
               <Link 
-                href="#assortiment" 
+                href="/#assortiment" 
                 className="text-muted-foreground hover:text-foreground transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Assortiment
               </Link>
               <Link 
-                href="#over-ons" 
+                href="/#over-ons" 
                 className="text-muted-foreground hover:text-foreground transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Over ons
               </Link>
               <Link 
-                href="#contact" 
+                href="/#contact" 
                 className="text-muted-foreground hover:text-foreground transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >

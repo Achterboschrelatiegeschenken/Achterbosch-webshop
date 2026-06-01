@@ -1,5 +1,8 @@
+"use client"
+
 import { Button } from "./ui/button"
 import { ArrowRight, Mail, Phone } from "lucide-react"
+import Link from "next/link"
 
 export function CTASection() {
   return (
@@ -21,20 +24,24 @@ export function CTASection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-         
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
-              >
-                Offerte aanvragen
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                
-                className="border-border text-foreground hover:bg-secondary px-8"
-              >
-                <Phone className="mr-2 w-5 h-5" />
-                Bel ons
-              </Button>
+              
+              <Link href="/offerte">        
+  <Button
+    className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
+  >
+    Offerte aanvragen
+    <ArrowRight className="ml-2 w-5 h-5" />
+  </Button>
+</Link>
+              <Button
+  className="border-border text-foreground hover:bg-secondary px-8"
+  onClick={() => {
+    window.location.href = "tel:+31615604248"
+  }}
+>
+  <Phone className="mr-2 w-5 h-5" />
+  Bel ons
+</Button>
             </div>
           </div>
 
