@@ -2,17 +2,19 @@
 
 import { Button } from "./ui/button"
 import { MessageCircle } from "lucide-react"
+import Link from "next/link"
 
 export function MobileStickyCTA() {
   return (
     <div className="fixed bottom-6 right-6 z-50 lg:hidden">
-      <Button 
-        
-         className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25 rounded-full px-6"
-      >
-        <MessageCircle className="mr-2 w-5 h-5" />
-        Offerte
-      </Button>
+      <Link href="/offerte">
+  <Button
+    className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25 rounded-full px-6"
+  >
+    <MessageCircle className="mr-2 w-5 h-5" />
+    Offerte
+  </Button>
+</Link>
     </div>
   )
 }
