@@ -6,12 +6,15 @@ import { Header } from "../../../components/header"
 import { Footer } from "../../../components/footer"
 import { addToCart } from "../../../lib/cart"
 import { Trash2 } from "lucide-react"
+import { useRef } from "react"
 
 export default function BorrelplankPage() {
   const [selectedImage, setSelectedImage] = useState(
     "/products/steenbergen.JPG"
   )
 const [logoPreview, setLogoPreview] = useState("")
+const [fileName, setFileName] = useState("")
+const fileInputRef = useRef<HTMLInputElement>(null)
   return (
     <>
       <Header />
@@ -23,14 +26,22 @@ const [logoPreview, setLogoPreview] = useState("")
           <div className="space-y-4">
 
             <div className="bg-card border border-border rounded-2xl p-8">
-              <Image
-                src={selectedImage}
-                alt="Borrelplank met Gravering"
-                width={800}
-                height={800}
-                className="w-full h-auto object-contain rounded-xl"
-              />
-            </div>
+
+  <div className="relative">
+
+    <Image
+      src={selectedImage}
+      alt="Borrelplank met Gravering"
+      width={800}
+      height={800}
+      className="w-full h-auto object-contain rounded-xl"
+    />
+
+   
+
+  </div>
+
+</div>
 
             <div className="grid grid-cols-3 gap-4">
 
@@ -107,48 +118,75 @@ const [logoPreview, setLogoPreview] = useState("")
             </div>
 <div className="bg-card border border-border rounded-2xl p-6 mb-8">
 
-  <h3 className="font-bold text-xl mb-4">
-    Upload uw logo
-  </h3>
+  <div className="mb-4">
+    <h3 className="font-bold text-xl">
+       Voorbeeld
+    </h3>
+  </div>
 
-  <input
-    type="file"
-    accept="image/*"
-    onChange={(e) => {
-      const file = e.target.files?.[0]
-
-      if (file) {
-        setLogoPreview(URL.createObjectURL(file))
-      }
-    }}
-    className="w-full"
-  />
-
-</div>
-{logoPreview && (
-  <div className="bg-card border border-border rounded-2xl p-6 mb-8">
-
-    <div className="flex items-center justify-between mb-4">
-      <h3 className="font-bold text-xl">
-        Voorbeeld van uw logo
-      </h3>
-
-      <button
-        onClick={() => setLogoPreview("")}
-        className="text-red-500 hover:text-red-600 transition"
-      >
-        <Trash2 className="w-6 h-6" />
-      </button>
-    </div>
-
+  <div className="relative">
     <img
-      src={logoPreview}
-      alt="Logo preview"
-      className="max-w-[250px] rounded-xl border border-border"
+      src="/products/borrelplank-blanco.jpeg"
+      alt="Borrelplank preview"
+      className="w-full rounded-xl"
     />
 
+    {logoPreview && (
+      <img
+        src={logoPreview}
+        alt="Logo preview"
+        className="
+          absolute
+          top-[46%]
+          left-[40%]
+          w-60
+          opacity-80
+          grayscale
+          mix-blend-multiply
+          -translate-x-1/2
+          -translate-y-1/2
+          pointer-events-none
+        "
+      />
+    )}
   </div>
-)}
+<p className="text-sm text-muted-foreground mt-2">
+  Dit is een indicatie van de gravure. Het uiteindelijke resultaat kan licht afwijken.
+</p>
+
+<div className="flex justify-end mt-4">
+  <button
+    onClick={() => {
+      setLogoPreview("")
+      setFileName("")
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""
+      }
+    }}
+    className="flex items-center gap-2 text-red-500 hover:text-red-600 transition"
+  >
+    <Trash2 className="w-5 h-5" />
+    Verwijder logo
+  </button>
+</div>
+
+<input
+  ref={fileInputRef}
+  type="file"
+  accept="image/*"
+  onChange={(e) => {
+    const file = e.target.files?.[0]
+
+    if (file) {
+      setLogoPreview(URL.createObjectURL(file))
+      setFileName(file.name)
+    }
+  }}
+/>
+
+</div>
+
             <div className="flex flex-col sm:flex-row gap-4">
 
               <button
