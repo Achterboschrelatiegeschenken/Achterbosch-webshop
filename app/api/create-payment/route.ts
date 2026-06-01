@@ -10,17 +10,17 @@ export async function POST(req: Request) {
     const { amount } = await req.json()
 
     const payment = await mollieClient.payments.create({
-      amount: {
-        currency: "EUR",
-        value: amount.toFixed(2),
-      },
-      description: "Bestelling Achterbosch",
-      redirectUrl: "http://localhost:3000/betaling-gelukt",
-    })
+  amount: {
+    currency: "EUR",
+    value: amount.toFixed(2),
+  },
+  description: "Bestelling Achterbosch",
+  redirectUrl: "https://www.achterboschrelatiegeschenken.nl/betaling-gelukt",
+})
 
-    return NextResponse.json({
-      checkoutUrl: payment.getCheckoutUrl(),
-    })
+return NextResponse.json({
+  checkoutUrl: payment._links.checkout.href,
+})
   } catch (error) {
     console.error(error)
 
