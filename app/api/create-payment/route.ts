@@ -21,12 +21,14 @@ export async function POST(req: Request) {
 return NextResponse.json({
   checkoutUrl: payment._links.checkout.href,
 })
-  } catch (error) {
-    console.error(error)
+  } catch (error: any) {
+  console.error("MOLLIE ERROR:", error)
 
-    return NextResponse.json(
-      { error: "Betaling aanmaken mislukt" },
-      { status: 500 }
-    )
-  }
+  return NextResponse.json(
+    {
+      error: error?.message || String(error),
+    },
+    { status: 500 }
+  )
+}
 }
