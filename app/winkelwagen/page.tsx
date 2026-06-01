@@ -66,7 +66,14 @@ const grandTotal = totalPrice + shippingCost
           <div className="flex-1">
             <h2 className="text-2xl font-semibold">
               {product.name}
+              
             </h2>
+            
+            {product.fileName && (
+  <p className="text-sm text-muted-foreground mt-1">
+    Logo: {product.fileName}
+  </p>
+)}
             <p className="text-sm text-muted-foreground">
   € {getPrice(product).toFixed(2)} per stuk
 </p>

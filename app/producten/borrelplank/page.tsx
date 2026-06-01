@@ -194,10 +194,12 @@ const fileInputRef = useRef<HTMLInputElement>(null)
               <button
                 onClick={() => {
                   addToCart({
-                    name: "Borrelplank met Gravering",
-                    price: 39.95,
-                    image: "/products/steenbergen.JPG",
-                  })
+  name: "Borrelplank met Gravering",
+  price: 39.95,
+  image: "/products/steenbergen.JPG",
+  fileName: fileName,
+  logoPreview: logoPreview,
+})
 
                   window.location.href = "/winkelwagen"
                 }}
