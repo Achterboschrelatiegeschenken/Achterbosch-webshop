@@ -68,7 +68,7 @@ const grandTotal = totalPrice + shippingCost
               {product.name}
               
             </h2>
-            
+
             {product.fileName && (
   <p className="text-sm text-muted-foreground mt-1">
     Logo: {product.fileName}
@@ -101,9 +101,33 @@ const grandTotal = totalPrice + shippingCost
   -
 </button>
 
-              <p className="text-muted-foreground">
-                {product.quantity}
-              </p>
+              <input
+  type="number"
+  min="1"
+  value={product.quantity}
+  onFocus={(e) => e.target.select()}
+  onChange={(e) => {
+    const newQuantity = Number(e.target.value)
+
+    if (newQuantity >= 1) {
+      const updatedCart = [...cart]
+
+      updatedCart[index].quantity = newQuantity
+
+      setCart(updatedCart)
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(updatedCart)
+      )
+
+      window.dispatchEvent(
+        new Event("cartUpdated")
+      )
+    }
+  }}
+  className="w-20 text-center bg-white text-black border border-gray-300 rounded-lg py-1"
+/>
 
               <button
                 onClick={() => {

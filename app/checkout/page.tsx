@@ -19,6 +19,7 @@ const [postalCode, setPostalCode] = useState("")
 const [city, setCity] = useState("")
 const [notes, setNotes] = useState("")
 const [logo, setLogo] = useState<File | null>(null)
+const [logoBase64, setLogoBase64] = useState("")
   const [cart, setCart] = useState<any[]>([])
   const router = useRouter()
 
@@ -227,11 +228,21 @@ const grandTotal = totalPrice + shippingCost
   <input
     type="file"
     accept="image/*,.pdf,.ai,.eps"
-    onChange={(e) => {
-      if (e.target.files?.[0]) {
-        setLogo(e.target.files[0])
-      }
-    }}
+   onChange={(e) => {
+  const file = e.target.files?.[0]
+
+  if (file) {
+    setLogo(file)
+
+    const reader = new FileReader()
+
+    reader.onloadend = () => {
+      setLogoBase64(reader.result as string)
+    }
+
+    reader.readAsDataURL(file)
+  }
+}}
     className="hidden"
   />
 
@@ -311,25 +322,44 @@ if (logo) {
   formData.append("logo", logo)
 }
 
-const response = await fetch("/api/order", {
+const response = await fetch("/api/create-payment", {
   method: "POST",
-  body: formData,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    amount: grandTotal,
+  }),
+})
 
+const data = await response.json()
+
+localStorage.setItem(
+  "pendingOrder",
+  JSON.stringify({
+    name,
+    company,
+    vatNumber,
+    email,
+    phone,
+    address,
+    postalCode,
+    city,
+    notes,
+    grandTotal,
+    cart,
+    logoBase64,
+logoName: logo?.name || "",
   })
+)
 
-  const data = await response.json()
-
-  if (data.success) {
-    setSuccess(true)
-
-    localStorage.removeItem("cart")
-  }
+window.location.href = data.checkoutUrl
 }}
-    
-  className="w-full bg-primary text-white py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition"
+className="w-full bg-primary text-white py-4 rounded-xl text-lg font-semibold hover:opacity-90 transition"
 >
   Bestelling afronden
 </button>
+
 {success && (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
 
@@ -349,6 +379,7 @@ const response = await fetch("/api/order", {
       >
         OK
       </button>
+
 
     </div>
 

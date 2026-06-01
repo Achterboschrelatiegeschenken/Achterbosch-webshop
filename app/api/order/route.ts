@@ -18,15 +18,29 @@ const notes = formData.get("notes")
 const grandTotal = Number(formData.get("grandTotal"))
 const cart = JSON.parse(formData.get("cart") as string)
 const logo = formData.get("logo") as File | null
-const logoName = logo ? logo.name : "Geen bestand"
+
+const logoBase64 = formData.get("logoBase64") as string | null
+const logoNameFromBase64 = formData.get("logoName") as string | null
+
+const logoName =
+  logo?.name ||
+  logoNameFromBase64 ||
+  "Geen bestand"
 
     await resend.emails.send({
 
-      attachments: logo
+    attachments: logo
   ? [
       {
         filename: logo.name,
         content: Buffer.from(await logo.arrayBuffer()),
+      },
+    ]
+  : logoBase64
+  ? [
+      {
+        filename: logoNameFromBase64 || "logo.png",
+        content: logoBase64.split(",")[1],
       },
     ]
   : [],
