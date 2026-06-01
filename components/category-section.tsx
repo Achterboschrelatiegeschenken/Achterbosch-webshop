@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent } from "./ui/card"
-import { ArrowUpRight, Key, Wine, Disc, Pen } from "lucide-react"
+import { ArrowUpRight, Key, Wine, Disc, Pen, ChefHat, Utensils, Gift, } from "lucide-react"
 
 const categories = [
   {
@@ -30,6 +30,13 @@ const categories = [
   icon: Pen,
   image: "/images/pen.jpg",
   href: "/pennen"
+},
+{
+  title: "Borrelplanken",
+  description: "Luxe gegraveerde borrelplanken met uw eigen logo of ontwerp. ",
+  icon: Utensils,
+  image: "/products/steenbergen.JPG",
+  href: "/borrelplanken"
 },
 ]
 
