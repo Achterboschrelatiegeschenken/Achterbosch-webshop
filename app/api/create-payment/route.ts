@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import createMollieClient from "@mollie/api-client"
 
 const mollieClient = createMollieClient({
-  apiKey: process.env.MOLLIE_API_KEY!,
+  apiKey: process.env.MOLLIE_API_KEY?.trim() || "",
 })
 
 export async function POST(req: Request) {
