@@ -77,6 +77,52 @@ const logoName =
         <p>${notes}</p>
       `,
     })
+    await resend.emails.send({
+  from: "onboarding@resend.dev",
+  to: email as string,
+ subject: "Bestelbevestiging - Achterbosch Relatiegeschenken",
+  html: `
+    <h1>Bedankt voor uw bestelling!</h1>
+
+    <p>Beste ${name},</p>
+
+<p>
+Hartelijk dank voor uw bestelling bij Achterbosch Relatiegeschenken.
+</p>
+
+    <p>
+      Wij hebben uw bestelling in goede orde ontvangen.
+    </p>
+
+    <p>
+      Wij controleren uw bestelling en eventuele bestanden voordat wij met de productie starten.
+    </p>
+
+    <h2>Besteloverzicht</h2>
+
+    ${cart
+      .map(
+        (product: any) => `
+          <div>
+            ${product.name} × ${product.quantity}
+          </div>
+        `
+      )
+      .join("")}
+
+    <h2>Totaal: € ${grandTotal.toFixed(2)}</h2>
+
+    <p>
+      Heeft u vragen? Neem gerust contact met ons op.
+    </p>
+
+    <p>
+      Achterbosch Relatiegeschenken<br />
+      p.achterbosch@gmail.com<br />
+      +31 (0)6 156 04 248
+    </p>
+  `,
+})
 
     return Response.json({ success: true })
   } catch (error) {
