@@ -114,7 +114,9 @@ Hartelijk dank voor uw bestelling bij Achterbosch Relatiegeschenken.
       )
       .join("")}
 
-    <h2>Totaal: € ${grandTotal.toFixed(2)}</h2>
+    const totalIncl = grandTotal
+const totalExcl = grandTotal / 1.21
+const btwAmount = totalIncl - totalExcl
 
     <p>
       Heeft u vragen? Neem gerust contact met ons op.
