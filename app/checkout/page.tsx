@@ -48,7 +48,9 @@ const totalPrice = cart.reduce(
 const shippingCost = totalPrice >= 50 ? 0 : 6.95
 
 const grandTotal = totalPrice + shippingCost
-
+const totalIncl = grandTotal
+const totalExcl = grandTotal / 1.21
+const btwAmount = totalIncl - totalExcl
   return (
     
     <>
@@ -101,11 +103,22 @@ const grandTotal = totalPrice + shippingCost
       <span>Verzendkosten</span>
       <span>€ {shippingCost.toFixed(2)}</span>
     </div>
+<div className="space-y-2 border-t pt-4">
+  <div className="flex justify-between text-sm">
+    <span>Excl. btw</span>
+    <span>€ {totalExcl.toFixed(2)}</span>
+  </div>
 
-    <div className="flex justify-between text-2xl font-bold pt-4">
-      <span>Totaal</span>
-      <span>€ {grandTotal.toFixed(2)}</span>
-    </div>
+  <div className="flex justify-between text-sm">
+    <span>BTW (21%)</span>
+    <span>€ {btwAmount.toFixed(2)}</span>
+  </div>
+
+  <div className="flex justify-between font-bold text-lg">
+    <span>Totaal incl. btw</span>
+    <span>€ {totalIncl.toFixed(2)}</span>
+  </div>
+</div>
 
   </div>
 </div>
