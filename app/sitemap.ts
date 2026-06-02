@@ -6,10 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://www.achterboschrelatiegeschenken.nl",
       lastModified: new Date(),
     },
-    {
-      url: "https://www.achterboschrelatiegeschenken.nl/assortiment",
-      lastModified: new Date(),
-    },
+   
     {
       url: "https://www.achterboschrelatiegeschenken.nl/winkelwagen",
       lastModified: new Date(),
