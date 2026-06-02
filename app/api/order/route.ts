@@ -21,7 +21,9 @@ const logo = formData.get("logo") as File | null
 
 const logoBase64 = formData.get("logoBase64") as string | null
 const logoNameFromBase64 = formData.get("logoName") as string | null
-
+const totalIncl = grandTotal
+const totalExcl = grandTotal / 1.21
+const btwAmount = totalIncl - totalExcl
 const logoName =
   logo?.name ||
   logoNameFromBase64 ||
@@ -71,7 +73,9 @@ const logoName =
           )
           .join("")}
 
-        <h2>Totaal: € ${grandTotal.toFixed(2)}</h2>
+        <p><strong>Excl. btw:</strong> € ${totalExcl.toFixed(2)}</p>
+<p><strong>BTW (21%):</strong> € ${btwAmount.toFixed(2)}</p>
+<h2>Totaal incl. btw: € ${totalIncl.toFixed(2)}</h2>
 
         <p><strong>Opmerkingen:</strong></p>
         <p>${notes}</p>
