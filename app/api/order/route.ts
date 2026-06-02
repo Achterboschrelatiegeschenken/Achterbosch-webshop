@@ -17,6 +17,11 @@ const city = formData.get("city")
 const notes = formData.get("notes")
 const grandTotal = Number(formData.get("grandTotal"))
 const cart = JSON.parse(formData.get("cart") as string)
+const orderNumber =
+  "AR-" +
+  new Date().toISOString().slice(0, 10).replace(/-/g, "") +
+  "-" +
+  Math.floor(1000 + Math.random() * 9000)
 const logo = formData.get("logo") as File | null
 
 const logoBase64 = formData.get("logoBase64") as string | null
@@ -51,6 +56,8 @@ const logoName =
       subject: "Nieuwe bestelling ontvangen",
       html: `
         <h1>Nieuwe bestelling</h1>
+
+<p><strong>Ordernummer:</strong> ${orderNumber}</p>
 
         <p><strong>Naam:</strong> ${name}</p>
           <p><strong>Bedrijf:</strong> ${company}</p>
@@ -87,6 +94,8 @@ const logoName =
  subject: "Bestelbevestiging - Achterbosch Relatiegeschenken",
   html: `
     <h1>Bedankt voor uw bestelling!</h1>
+
+<p><strong>Ordernummer:</strong> ${orderNumber}</p>
 
     <p>Beste ${name},</p>
 
