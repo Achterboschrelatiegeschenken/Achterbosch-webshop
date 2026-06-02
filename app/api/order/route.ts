@@ -44,7 +44,7 @@ const logoName =
       },
     ]
   : [],
-      from: "onboarding@resend.dev",
+      from: "patrick@achterbosch-service.nl",
       to: "p.achterbosch@gmail.com",
       subject: "Nieuwe bestelling ontvangen",
       html: `
@@ -78,7 +78,7 @@ const logoName =
       `,
     })
     await resend.emails.send({
-  from: "onboarding@resend.dev",
+  from: "patrick@achterbosch-service.nl",
   to: email as string,
  subject: "Bestelbevestiging - Achterbosch Relatiegeschenken",
   html: `
