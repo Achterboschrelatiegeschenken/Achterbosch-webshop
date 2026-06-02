@@ -88,7 +88,7 @@ export default function HoutenFlesopenerPage() {
             </h1>
 
             <p className="text-3xl font-bold text-primary mb-6">
-              € 9,95
+              € 9,95 incl.btw
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">

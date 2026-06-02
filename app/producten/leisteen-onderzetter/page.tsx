@@ -109,7 +109,7 @@ export default function ProductPage() {
               </h2>
 
               <p className="text-3xl font-bold text-primary mb-6">
-                Vanaf € 8,95
+                Vanaf € 8,95 incl. btw
               </p>
 
               

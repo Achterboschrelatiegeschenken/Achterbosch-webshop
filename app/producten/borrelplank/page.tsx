@@ -95,7 +95,7 @@ const fileInputRef = useRef<HTMLInputElement>(null)
             </h1>
 
             <p className="text-3xl font-bold text-primary mb-6">
-              € 39,95
+              € 39,95 incl. btw
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
@@ -195,7 +195,7 @@ const fileInputRef = useRef<HTMLInputElement>(null)
                 onClick={() => {
                   addToCart({
   name: "Borrelplank met Gravering",
-  price: 39.95,
+  price: 39.95, 
   image: "/products/steenbergen.JPG",
   fileName: fileName,
   logoPreview: logoPreview,

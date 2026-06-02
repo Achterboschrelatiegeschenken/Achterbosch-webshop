@@ -89,7 +89,7 @@ export default function PennenPage() {
             </h1>
 
             <p className="text-3xl font-bold text-primary mb-6">
-              Vanaf € 4,95
+              Vanaf € 4,95 incl. btw
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
