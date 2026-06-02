@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: "https://www.achterboschrelatiegeschenken.nl/producten/borrelplank",
+      url: "https://www.achterboschrelatiegeschenken.nl/producten/borrelplanken",
       lastModified: new Date(),
     },
     {
